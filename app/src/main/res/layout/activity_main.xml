@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+
+    tools:context="com.example.acc.niddepoule.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/weather"
+            style="@style/ClassStyle"
+            android:background="#FFD740"
+            android:text="Weather" />
+
+        <TextView
+            android:id="@+id/map"
+            style="@style/ClassStyle"
+            android:background="#FFD740"
+            android:text="Map" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:text="GO!"
+        android:elevation="0dp"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:id="@+id/goButton"
+        android:onClick=""/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/poule"
+        android:id="@+id/pouleimage"
+        android:foregroundGravity="center"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/goButton"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
