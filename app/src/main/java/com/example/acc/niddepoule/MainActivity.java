@@ -25,8 +25,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager SM;
     private Double ZA, ZE;
     private int i = 0;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("potholes/pothole1");
+    private FirebaseDatabase database;          //entry point for app to access database
+    private DatabaseReference myRef;            //class to reference to specific part pf the DB
+
+
+
+
 
     public LocationManager locationManager;
     private String msg;
@@ -91,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         });
 
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("potholes/pothole1");
+
+
         SM = (SensorManager) getSystemService(SENSOR_SERVICE);
         mySensor = SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
@@ -98,25 +106,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //location manager
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
+
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,this);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,this);
 
